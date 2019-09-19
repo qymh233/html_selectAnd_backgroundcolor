@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>chooseall</title>
+    <style>
+        table{
+            border: 1px solid;
+            margin-left: 30%;
+            width: 500px;
+    }
+        td,th{
+            text-align: center;
+            border: 1px solid;
+     }
+        div{
+            margin-top: 10px;
+            margin-left: 30%;
+     }
+     .out{
+         background-color:lightpink;
+     }
+     .over{
+         background-color: deepskyblue;
+     }
+    </style>
+    <script>
+        window.onload = function () {
+            document.getElementById("selectall").onclick = function () {
+                var cbs = document.getElementsByName("cb");
+                for (var i = 0; i < cbs.length; i++) {
+                    cbs[i].checked = true;
+                }
+            }
+            document.getElementById("unselectall").onclick = function () {
+                var cbs = document.getElementsByName("cb");
+                for (var i = 0; i < cbs.length; i++) {
+                    cbs[i].checked = false;
+                }
+            }
+            document.getElementById("selectrev").onclick = function () {
+                var cbs = document.getElementsByName("cb");
+                for (var i = 0; i < cbs.length; i++) {
+                    cbs[i].checked = !cbs[i].checked;
+                }
+            }
+            document.getElementById("firstcb").onclick = function () {
+                var cbs = document.getElementsByName("cb");
+                for (var i = 0; i < cbs.length; i++) {
+                    cbs[i].checked = this.checked;
+                }
+            }
+
+            var trs = document.getElementsByTagName("tr");
+            for (var i = 0; i < trs.length; i++) {
+                trs[i].onmouseover = function () {
+                    this.className = "over";
+                }
+                trs[i].onmouseout = function () {
+                    this.className = "out";
+                }
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <table>
+        <caption>学生信息表</caption>
+        <tr>
+            <th><input type="checkbox" name="cb" id="firstcb"></th>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="cb"></td>
+            <td>1</td>
+            <td>周芷若</td>
+            <td>男</td>
+            <td><a href="javascript:void(0)" onclick="delTr(this);">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="cb"></td>
+            <td>2</td>
+            <td>赵梦瑶</td>
+            <td>女</td>
+            <td><a href="javascript:void(0)" onclick="delTr(this);">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="cb"></td>
+            <td>3</td>
+            <td>徐天祺</td>
+            <td>男</td>
+            <td><a href="javascript:void(0)" onclick="delTr(this);">删除</a></td>
+        </tr>
+    </table>
+    <div>
+        <input type="button" id="selectall" value="全选">
+        <input type="button" id="unselectall" value="全不选">
+        <input type="button" id="selectrev" value="反选">
+    </div>
+
+</body>
+
+</html>
